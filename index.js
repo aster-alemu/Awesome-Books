@@ -1,8 +1,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 import Store from './modules/store.js';
-import { title, author, form } from './modules/displayBook.js';
+import { title, author, form } from './modules/stringfier.js';
 import { Stringifier } from './modules/stringfier.js';
+import { DateTime } from './modules/luxon.min.js';
 
 let oldBooks = localStorage.getItem('book');
 if (oldBooks !== null) {
@@ -57,7 +58,7 @@ form.addEventListener('submit', (event) => {
 
 // Add navigation
 const time = document.querySelector('#time');
-time.innerText = new Date();
+time.innerText = DateTime.local();
 const links = document.querySelectorAll('.links');
 const sections = document.querySelectorAll('.section');
 links.forEach((link) => {
